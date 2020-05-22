@@ -1,0 +1,22 @@
+class Solution {
+    vector<int> to_binary(int n){
+        vector<int> s;
+        while(n){
+            s.push_back(n%2);
+            n/=2;
+        }
+        reverse(s.begin(),s.end());
+        return s;
+    }
+public:
+    int findComplement(int num) {
+        vector<int>s1=to_binary(num);
+        int ans=0,k=0;
+        for(int x=0;x<s1.size();x++)
+            (s1[x]==0)?s1[x]=1:s1[x]=0;
+        for(int i=s1.size()-1;i>=0;i--){
+            ans+=s1[i]*pow(2,k++);
+        }
+        return ans;
+    }
+};
