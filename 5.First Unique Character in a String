@@ -1,0 +1,14 @@
+static int __=[](){ ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);return 0;}();
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int mini=INT_MAX;
+        unordered_map<char,int>M;
+        for(char c:s)
+            M[c]+=1;
+
+        for(int i=0;i<s.size();i++)
+             if(M[s[i]]==1) return i;
+        return -1;
+    }
+};
