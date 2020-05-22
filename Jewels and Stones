@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+        set<char>A;
+        int count1=0;
+        for(char c:J) A.insert(c);
+        for(char x:S){
+            if(A.count(x)) count1++; 
+        }
+        return count1;
+    }
+};
