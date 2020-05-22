@@ -1,0 +1,22 @@
+class Solution {
+    public:
+    bool isPerfectSquare(int num) 
+    {   ios_base::sync_with_stdio(false);  cin.tie(NULL);cout.tie(0);
+        long long a,left=0,right=num,mid;
+        while(left<=right){
+            mid=left+(right-left)/2;
+            if(mid*mid==num){
+                a=mid;
+                break;
+              }
+            else if(mid*mid<num)
+                left=mid+1;
+            else
+                right=mid-1;
+        }
+        
+       if(a*a==num) return true;
+       else  return false;
+       
+ }
+};
