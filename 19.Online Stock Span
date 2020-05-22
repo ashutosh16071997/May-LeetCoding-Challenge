@@ -1,0 +1,30 @@
+static const auto _____ = []()        //fast io
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    return 0;
+}();
+class StockSpanner {
+public:
+    vector<long long>V; 
+    int ans;
+    StockSpanner() {
+        V.clear();
+    }
+    
+    int next(int price)
+    {
+        ans=1;
+        V.push_back(price);
+        for(int i=V.size()-2;i>=0;i--){
+            if(price>=V[i]) ans++;
+            else break;
+        }
+        return ans;
+    }
+};
+/**
+ * Your StockSpanner object will be instantiated and called as such:
+ * StockSpanner* obj = new StockSpanner();
+ * int param_1 = obj->next(price);
+ */
