@@ -1,0 +1,16 @@
+static int __=[](){ ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);return 0;}();
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int,int>M;
+        int ans;
+        for(int x:nums)
+            M[x]++;
+        for(auto i:M)
+            if(i.second > nums.size()/2) {
+                ans=i.first;
+                break;
+            }
+        return ans;
+    }
+};
