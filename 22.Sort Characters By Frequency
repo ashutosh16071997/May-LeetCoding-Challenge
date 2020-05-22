@@ -1,0 +1,25 @@
+class Solution {
+public:
+    
+    string frequencySort(string s) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);cout.tie(0);
+        map<char,int>M;
+        string res="";
+        int x,t;
+        for(char c:s)
+            M[c]++;
+ 
+        vector<pair<char, int>>V(M.begin(), M.end());
+        sort(V.begin(),V.end(),[](pair<char,int> a,pair<char,int> b){
+        return a.second > b.second;
+    });
+        for(t=0;t<V.size();t++)
+        {    
+           while(V[t].second--){ 
+            res+=V[t].first;
+           }
+        }
+        return res;
+    }
+};
