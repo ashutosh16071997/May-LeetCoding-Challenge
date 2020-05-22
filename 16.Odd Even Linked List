@@ -1,0 +1,27 @@
+static const auto _____ = []()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    return 0;
+}();
+
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        
+        if(head==NULL) return head;
+        if(head->next==NULL) return head;
+        ListNode  *n=head,*p_odd=head->next,*t_odd=n, *t1_even=p_odd,*tt1_even=t1_even;
+        while(p_odd!=NULL && p_odd->next!=NULL)
+        {   
+            p_odd=p_odd->next;
+            t_odd->next=p_odd;
+            t_odd=t_odd->next;
+            p_odd=(p_odd->next)?p_odd->next:NULL;  
+            tt1_even->next=p_odd;
+            tt1_even=tt1_even->next;
+        }
+        t_odd->next=t1_even;
+        return n;  
+    }
+};
