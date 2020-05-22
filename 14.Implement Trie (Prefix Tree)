@@ -1,0 +1,43 @@
+static const auto _____ = []()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    return 0;
+}();
+class Trie {
+public:
+    /** Initialize your data structure here. */
+    unordered_set<string>S;
+    Trie() {
+        //nothing
+    }
+    
+    /** Inserts a word into the trie. */
+    void insert(string word) {
+        S.emplace(word);
+    }
+    
+    /** Returns if the word is in the trie. */
+    bool search(string word) {
+      return S.count(word);
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    bool startsWith(string prefix) {
+       for(auto it: S){
+            if(it.size() < prefix.size()) continue;
+            int i = 0;
+            while(i < prefix.size() && it[i] == prefix[i]) i++;
+            if(i == prefix.size()) return true; 
+        }
+        return false;
+    }
+};
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie* obj = new Trie();
+ * obj->insert(word);
+ * bool param_2 = obj->search(word);
+ * bool param_3 = obj->startsWith(prefix);
+ */
