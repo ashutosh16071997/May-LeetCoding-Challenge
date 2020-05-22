@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) 
+    {
+        vector<int>V,Ms(26),Mp(26);
+        char c;
+        if(s.length()==0) return V;
+        if(p.length()>s.length()) return V;
+        int lens=s.length(),lenp=p.length();
+        for(char i:p)
+            Mp[i - 'a']++;
+        
+        for(int i=0;i<lens;i++)
+        {
+            Ms[s[i]- 'a']++;
+            if(i>=lenp){
+                c=s[i-lenp];
+                Ms[c-'a']--;
+            }
+            if(Mp==Ms) V.push_back(i-lenp+1);
+        
+      }
+        return V;
+    }
+};
