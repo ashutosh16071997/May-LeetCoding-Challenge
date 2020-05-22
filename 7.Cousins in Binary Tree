@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> fun(TreeNode *root,int v,int l,int par)
+    {
+        if(root==NULL){
+            vector<int>arr={-1,-1};
+            return arr;
+        }
+        if(v==root->val){
+       vector<int>arr={l,par};
+            return arr;     
+        }
+        else{
+            vector<int>t1=fun(root->left,v,l+1,root->val);
+            vector<int>t2=fun(root->right,v,l+1,root->val);
+            if(t1[0]==-1)return t2;
+            else return t1;
+        }
+    }
+    bool isCousins(TreeNode* root, int x, int y) {
+        vector<int>ans1=fun(root,x,0,root->val);
+        vector<int>ans2=fun(root,y,0,root->val);
+        if(ans1[0]==ans2[0] && ans1[1]!=ans2[1]) return true;
+        return false;
+        }
+    
+};
