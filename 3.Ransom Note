@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        if(ransomNote.length()>magazine.length()) return false;
+        map<char,int>R;
+        map<char,int>M;
+        for(char x:ransomNote)
+            R[x]++;
+        for(char x:magazine)
+            M[x]++;
+        for(auto it=R.begin();it!=R.end();it++){
+            if(M.count(it->first)==0) return false;
+            
+            for(auto it1=M.begin();it1!=M.end();it1++){
+                if(it->first==it1->first && it->second > it1->second) return false;
+                
+            }
+        }
+        return true;
+    }
+};
