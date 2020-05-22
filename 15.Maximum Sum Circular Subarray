@@ -1,0 +1,37 @@
+static const auto _____ = []()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    return 0;
+}();
+
+class Solution {
+public:
+    int maxSubarraySumCircular(vector<int>& A) {
+        
+        if(A.size()==1) return A[0];
+        long long currentmax=A[0],gb1=A[0],gb2=INT_MAX,gb3=INT_MAX;
+         long long sum=accumulate(A.begin(),A.end(),0);
+        for(int i=1;i<A.size();i++)
+        {
+            currentmax=max((long long)A[i],A[i]+currentmax);
+           gb1=max(gb1,currentmax);
+        }
+       currentmax=30001;
+         for(int i=0;i<A.size()-1;i++)  
+        {
+            currentmax=min((long long)A[i],A[i]+currentmax);
+           gb2=min(gb2,currentmax);
+        }
+        
+       currentmax=30001;
+         for(int i=1;i<A.size();i++)
+        {
+            currentmax=min((long long)A[i],A[i]+currentmax);
+           gb2=min(gb2,currentmax);
+        }
+         
+        return max(gb1,max(sum-gb2,sum-gb3));
+        
+    }
+};
