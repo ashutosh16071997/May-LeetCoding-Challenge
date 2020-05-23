@@ -1,0 +1,27 @@
+//naive solution
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) {
+        ios_base::sync_with_stdio(false);  cin.tie(NULL);cout.tie(0);
+        vector<vector<int>>a;
+        if(A.size()==0 && B.size()==0) return a;
+         vector<vector<int>>ans(A.size()*B.size());
+        int x,y,t1,t2,k=0;
+        for(int i=0;i<A.size();i++)
+        {
+            x=A[i][0],y=A[i][1];
+            for(int j=0;j<B.size();j++)
+            {
+                t1=max(B[j][0],x);
+                t2=min(B[j][1],y);
+                if(t1<=t2)
+                {   ans[k].push_back(t1);
+                    ans[k++].push_back(t2);
+                }     
+            }
+        }
+        ans.resize(k);
+        ans.shrink_to_fit();
+        return ans;
+    }
+};
