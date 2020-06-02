@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) 
+    {
+        ios_base::sync_with_stdio(false);  cin.tie(NULL);cout.tie(0);
+        vector<vector<int>>ans;
+        vector<int>jhol;
+        vector<pair<int,int>>temp;
+        for(int i=0;i<points.size();i++)
+            temp.push_back(make_pair(i,points[i][0]*points[i][0] + points[i][1]*points[i][1]));
+        
+       
+        sort(temp.begin(),temp.end(),[]( pair<int,int>a , pair<int,int>b ){
+            return a.second < b.second;
+        });
+      
+        for(auto it:temp)
+        {   
+            jhol.push_back(points[it.first][0]);
+            jhol.push_back(points[it.first][1]);
+            ans.push_back(jhol);
+            jhol.clear();
+            K--;
+            if(K==0) break;
+            
+        }
+        return ans; 
+        
+    }
+};
